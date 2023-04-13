@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdio.h>
+#include <vector>
 #include "Node.h"
 
 class BST{
@@ -9,5 +10,17 @@ class BST{
         void insert(int val);
         void remove(int val);
         Node* find(int val);
+        void insertVector(vector<int> n);
+        void removeVector(vector<int> n);
+        void shuffle(vector<int> &n, int S);
+        void shake(vector<int> &n, int S, int R);
+        int avgDepth();
+        int avgDepthHelp(Node* curr, int currDepth);
+        int getHeight();
+        int getHeightHelp(Node* curr);
+        void reset();
+        int getCount();
+        int compCount;
         Node* root;
+        int numNode;
 };
