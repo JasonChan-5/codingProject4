@@ -23,11 +23,10 @@ void BST::insert(int val){
         return;
     }
     while (curr != nullptr){
+        compCount++;
         if (curr->val == val){
-            compCount++;
             break;
         }
-        compCount++;
         if (val < curr->val){
             if (curr->left != nullptr){
                 curr = curr->left;
@@ -46,7 +45,6 @@ void BST::insert(int val){
                 numNode++;
                 break;
             }
-            compCount++;
         }
         else{
             if (curr->right != nullptr){
@@ -66,9 +64,7 @@ void BST::insert(int val){
                 numNode++;
                 break;
             }
-            compCount++;
         }
-        compCount++;
     }
 }
 
@@ -170,7 +166,6 @@ void BST::remove(int val){
             l = false;
             curr = curr->right;
         }
-        compCount++;
     }
 }
 
@@ -178,7 +173,6 @@ Node* BST::find(int val){
     Node* curr = root;
     while (curr != nullptr){
         if (curr->val == val){
-            compCount++;
             return curr;
         }
         if (val < curr->val){
@@ -231,16 +225,8 @@ void BST::shake(vector<int> &n, int S, int R){
 
         //random direction stuff
         bool l = rand() % 2;
-        cout << l << endl;
         
-        while(swaps > 0){
-            if(nextSwap == n.size()){
-                nextSwap = 0;
-            }
-            if (nextSwap == -1){
-                nextSwap = n.size() - 1;
-            }
-            
+        while(swaps > 0 && (nextSwap < n.size() && nextSwap >= 0)){
             int temp = n.at(startIndex);
             n.at(startIndex) = n.at(nextSwap);
             n.at(nextSwap) = temp;
@@ -303,3 +289,8 @@ void BST::printInOrderHelper(Node* curr){
         printInOrderHelper(curr->right);
     }
 }
+
+int BST::getNumNodes(){
+    return numNode;
+}
+

@@ -14,3 +14,7 @@ Node.o: Node.cpp Node.h
 
 clean:
 	rm -f *.o exec
+
+tar: clean
+	tar cvvf CP4_Chan_ychan18_JasonChan-5.tar
+	gzip CP4_Chan_ychan18_JasonChan-5.tar

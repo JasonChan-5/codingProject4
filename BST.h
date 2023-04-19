@@ -24,6 +24,7 @@ class BST{
         int getCount();
         void printInOrder();
         void printInOrderHelper(Node* curr);
+        int getNumNodes();
         int compCount;
         Node* root;
         int numNode;
