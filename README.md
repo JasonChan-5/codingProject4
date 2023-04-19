@@ -15,16 +15,22 @@
 <h4>Data Recorded</h4>
 
 <b>SKEW</b>
+
     Size of Tree | Average Comparisons Find | Average Comparisons Insert | Average Comparisons Remove
        50000                 24976                      28643                        28641
+
 <b>Slightly Random</b>
+
     Size of Tree | Average Comparisons Find | Average Comparisons Insert | Average Comparisons Remove
        50000                 12217                      12343                        12343
+
 <b>Fully Random</b>
+
     Size of Tree | Average Comparisons Find | Average Comparisons Insert | Average Comparisons Remove
        50000                 1394                       1249                         1249 
 
 <b>Raw Data:</b>
+
     Round 1. Fight!
     Skewed
     Average comparisons for find: 24962
@@ -102,17 +108,23 @@
 
 
 <b>SKEW</b>
+
     Size of Tree | Average Comparisons Find | Average Comparisons Insert | Average Comparisons Remove
         10000                 4974                       5153                         5141
+
 <b>Slightly Random</b>
+
     Size of Tree | Average Comparisons Find | Average Comparisons Insert | Average Comparisons Remove
         10000                 1664                       1539                         1535
+
 <b>Fully Random</b>
+
     Size of Tree | Average Comparisons Find | Average Comparisons Insert | Average Comparisons Remove
         10000                  243                        229                          232
 
 
 <b>Raw Data</b>
+
     Round 1. Fight!
     Skewed
     Average comparisons for find: 4974
@@ -190,16 +202,22 @@
 
 
 <b>SKEW</b>
+
     Size of Tree | Average Comparisons Find | Average Comparisons Insert | Average Comparisons Remove
         1000                 511                        436                          426
 <b>Slightly Random</b>
+
     Size of Tree | Average Comparisons Find | Average Comparisons Insert | Average Comparisons Remove
         1000                  91                         84                           83
+
 <b>Fully Random</b>
+
     Size of Tree | Average Comparisons Find | Average Comparisons Insert | Average Comparisons Remove
         1000                  18                         20                           21
 
+
 <b>Raw Data:</b>
+
     Round 1. Fight!
     Skewed
     Average comparisons for find: 511
