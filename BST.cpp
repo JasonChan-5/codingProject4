@@ -29,17 +29,17 @@ void BST::insert(int val){
         }
         compCount++;
         if (val < curr->val){
-            if (curr->left != nullptr && val < curr->left->val){
+            if (curr->left != nullptr){
                 curr = curr->left;
                 continue;
             }
-            else if (curr->left != nullptr){
-                Node* temp = new Node(val);
-                temp->left = curr->left;
-                curr->left = temp;
-                numNode++;
-                break;
-            }
+            // else if (curr->left != nullptr){
+            //     Node* temp = new Node(val);
+            //     temp->left = curr->left;
+            //     curr->left = temp;
+            //     numNode++;
+            //     break;
+            // }
             else{
                 Node* temp = new Node(val);
                 curr->left = temp;
@@ -49,17 +49,17 @@ void BST::insert(int val){
             compCount++;
         }
         else{
-            if (curr->right != nullptr && val > curr->right->val){
+            if (curr->right != nullptr){
                 curr = curr->right;
                 continue;
             }
-            else if (curr->right != nullptr){
-                Node* temp = new Node(val);
-                temp->right = curr->right;
-                curr->right = temp;
-                numNode++;
-                break;
-            }
+            // else if (curr->right != nullptr){
+            //     Node* temp = new Node(val);
+            //     temp->right = curr->right;
+            //     curr->right = temp;
+            //     numNode++;
+            //     break;
+            // }
             else{
                 Node* temp = new Node(val);
                 curr->right = temp;
@@ -205,11 +205,12 @@ void BST::removeVector(vector<int> n){
 }
 
 void BST::shuffle(vector<int> &n, int S){
+    srand(time(NULL));
     while(S > 0){
         int index1 = rand() % n.size();
-        srand(time(NULL));
+        //srand(time(NULL));
         int index2 = rand() % n.size();
-        srand(time(NULL));
+        //srand(time(NULL));
 
         int temp = n.at(index1);
         n.at(index1) = n.at(index2);
@@ -220,17 +221,24 @@ void BST::shuffle(vector<int> &n, int S){
 }
 
 void BST::shake(vector<int> &n, int S, int R){
+    srand(time(NULL));
     while (S > 0){
         int startIndex = rand() % n.size();
-        srand(time(NULL));
         int nextSwap = startIndex + 1;
-
+        //srand(time(NULL));
         int swaps = rand() % (R+1);
-        srand(time(NULL));
+        //srand(time(NULL));
+
+        //random direction stuff
+        bool l = rand() % 2;
+        cout << l << endl;
         
         while(swaps > 0){
             if(nextSwap == n.size()){
                 nextSwap = 0;
+            }
+            if (nextSwap == -1){
+                nextSwap = n.size() - 1;
             }
             
             int temp = n.at(startIndex);
@@ -238,7 +246,12 @@ void BST::shake(vector<int> &n, int S, int R){
             n.at(nextSwap) = temp;
 
             startIndex = nextSwap;
-            nextSwap++;
+            if (l){
+                nextSwap++;
+            }
+            else{
+                nextSwap--;
+            }
             swaps--;
         }
 
@@ -256,7 +269,7 @@ int BST::avgDepthHelp(Node* curr, int currDepth){
     }
     else{
         int newDepth = currDepth + 1;
-        return currDepth + avgDepthHelp(root->left, newDepth) + avgDepthHelp(root->right, newDepth);
+        return newDepth + avgDepthHelp(curr->left, newDepth) + avgDepthHelp(curr->right, newDepth);
     }
 }
 
@@ -265,6 +278,9 @@ int BST::getHeight(){
 }
 
 int BST::getHeightHelp(Node* curr){
+    if(curr == nullptr){
+        return -1;
+    }
     return 1 + max(getHeightHelp(curr->left), getHeightHelp(curr->right));
 }
 

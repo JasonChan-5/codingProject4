@@ -7,21 +7,22 @@ using namespace std;
 
 int main(){
     BST *x = new BST();
-    x->insert(5);
-
-    x->insert(2);
-    x->insert(8);
-
-    x->insert(1);
-    x->insert(3);
-    x->insert(7);
-    x->insert(9);
+    vector<int> n = {5, 2, 8, 1, 3, 7, 9};
+    vector<int> q = {1, 2, 3, 5, 6, 7, 7};
+    x->insertVector(n);
+    // vector<int> m = {5, 2, 8};
+    // x->removeVector(m);
+    // x->shake(n, 7, 7);
+    // for (int i = 0; i < n.size(); i++){
+    //     cout << n.at(i) << " ";
+    // }
+    // cout << endl;
 
     x->printInOrder();
-    cout<<endl;
-    x->remove(5);
-    x->printInOrder();
+    cout << endl;
 
-
-
+    cout << x->getCount() << endl;
+    x->reset();
+    cout << x->getCount() << endl;
+    
 }
