@@ -12,7 +12,7 @@
 
 <p>For our experiments, we created many helper functions to test the effectiveness of different shaped BSTs. Using trees of different sizes, we have generated a tree that is skewed, a tree that is slightly randomized, and a tree that is heavily randomized for each time the test method was called. In this test method, we averaged the number of comparisons made for a number of random calls to functions find (executed n/2 times), insert (called 50 times), and delete (called 50 times) where n is the number of nodes. The reason why we only called insert and delete 50 times was to avoid altering the tree in a meaningful way during the tests. After recording the average number of comparisons, we recorded the average results for trees of different sizes to see how our results scale with the number of nodes</p>
 
-<h4>Data Recorded</h4>
+<h3>Data Recorded</h3>
 
 <b>SKEW</b>
 
