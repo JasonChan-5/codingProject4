@@ -3,6 +3,8 @@
 #include <vector>
 #include "Node.h"
 
+using namespace std;
+
 class BST{
     public:
         BST();
@@ -20,6 +22,8 @@ class BST{
         int getHeightHelp(Node* curr);
         void reset();
         int getCount();
+        void printInOrder();
+        void printInOrderHelper(Node* curr);
         int compCount;
         Node* root;
         int numNode;

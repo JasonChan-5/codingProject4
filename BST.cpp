@@ -80,27 +80,43 @@ void BST::remove(int val){
         compCount++;
         if (curr->val == val){
             if (curr->left == nullptr && curr->right == nullptr){
+                if(prev == nullptr){
+                    root = nullptr;
+                }
+                if(l && prev != nullptr){
+                    prev->left = nullptr;
+                }else{
+                    prev->right = nullptr;
+                }
                 delete curr;
                 numNode--;
                 break;
             }
             if (curr->left == nullptr){
-                if (l){
-                    prev->left = curr->right;
-                }
-                else{
-                    prev->right = curr->right;
+                if(prev == nullptr){
+                    root = curr->right;
+                } else {
+                    if (l){
+                        prev->left = curr->right;
+                    }
+                    else{
+                        prev->right = curr->right;
+                    }
                 }
                 delete curr;
                 numNode--;
                 break;
             }
             else if (curr->right == nullptr){
-                if (l){
-                    prev->left = curr->left;
-                }
-                else{
-                    prev->right = curr->left;
+                if(prev == nullptr){
+                    root = curr->left;
+                }else {
+                    if (l){
+                        prev->left = curr->left;
+                    }
+                    else{
+                        prev->right = curr->left;
+                    }
                 }
                 delete curr;
                 numNode--;
@@ -119,14 +135,20 @@ void BST::remove(int val){
                 }
                 if (succPrev != nullptr){
                     succPrev->left = nullptr;
+                }else{
+                    curr->right = succ->right;
                 }
                 // }
                 //if (succ != prev){
-                if (l){
-                    prev->left = succ;
-                }
-                else{
-                    prev->right = succ;
+                if(prev == nullptr){
+                    root = succ;
+                }else {
+                    if (l){
+                        prev->left = succ;
+                    }
+                    else{
+                        prev->right = succ;
+                    }
                 }
                 succ->left = curr->left;
                 succ->right = curr->right;
@@ -155,7 +177,7 @@ void BST::remove(int val){
 Node* BST::find(int val){
     Node* curr = root;
     while (curr != nullptr){
-        if (curr->val = val){
+        if (curr->val == val){
             compCount++;
             return curr;
         }
@@ -252,4 +274,16 @@ void BST::reset(){
 
 int BST::getCount(){
     return compCount;
+}
+
+void BST::printInOrder(){
+    printInOrderHelper(root);
+}
+
+void BST::printInOrderHelper(Node* curr){
+    if(curr != nullptr){
+        printInOrderHelper(curr->left);
+        cout<<curr->val<<", ";
+        printInOrderHelper(curr->right);
+    }
 }
