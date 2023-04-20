@@ -12,8 +12,8 @@ class BST{
         void insert(int val);
         void remove(int val);
         Node* find(int val);
-        void insertVector(vector<int> n);
-        void removeVector(vector<int> n);
+        void insertVector(vector<int> &n);
+        void removeVector(vector<int> &n);
         void shuffle(vector<int> &n, int S);
         void shake(vector<int> &n, int S, int R);
         int avgDepth();
@@ -28,4 +28,6 @@ class BST{
         int compCount;
         Node* root;
         int numNode;
+        ~BST();
+        void deleteHelper(Node* x);
 };

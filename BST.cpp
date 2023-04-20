@@ -39,10 +39,12 @@ void BST::insert(int val){
             //     numNode++;
             //     break;
             // }
-            else{
+            else if (val > curr->val){
                 Node* temp = new Node(val);
                 curr->left = temp;
                 numNode++;
+                break;
+            }else {
                 break;
             }
         }
@@ -78,17 +80,18 @@ void BST::remove(int val){
             if (curr->left == nullptr && curr->right == nullptr){
                 if(prev == nullptr){
                     root = nullptr;
-                }
-                if(l && prev != nullptr){
-                    prev->left = nullptr;
                 }else{
-                    prev->right = nullptr;
+                    if(l){
+                        prev->left = nullptr;
+                    }else{
+                        prev->right = nullptr;
+                    }
                 }
                 delete curr;
                 numNode--;
                 break;
             }
-            if (curr->left == nullptr){
+            else if (curr->left == nullptr){ 
                 if(prev == nullptr){
                     root = curr->right;
                 } else {
@@ -186,14 +189,14 @@ Node* BST::find(int val){
     return nullptr;
 }
 
-void BST::insertVector(vector<int> n){
-    for (int i = 0; i < n.size(); i++){
+void BST::insertVector(vector<int> &n){
+    for (unsigned int i = 0; i < n.size(); i++){
         this->insert(n.at(i));
     }
 }
 
-void BST::removeVector(vector<int> n){
-    for (int i = 0; i < n.size(); i++){
+void BST::removeVector(vector<int> &n){
+    for (unsigned int i = 0; i < n.size(); i++){
         this->remove(n.at(i));
     }
 }
@@ -222,11 +225,12 @@ void BST::shake(vector<int> &n, int S, int R){
         //srand(time(NULL));
         int swaps = rand() % (R+1);
         //srand(time(NULL));
+        int size = n.size();
 
         //random direction stuff
         bool l = rand() % 2;
         
-        while(swaps > 0 && (nextSwap < n.size() && nextSwap >= 0)){
+        while(swaps > 0 && (nextSwap < size && nextSwap >= 0)){
             int temp = n.at(startIndex);
             n.at(startIndex) = n.at(nextSwap);
             n.at(nextSwap) = temp;
@@ -294,3 +298,14 @@ int BST::getNumNodes(){
     return numNode;
 }
 
+BST::~BST(){
+    deleteHelper(root);
+}
+
+void BST::deleteHelper(Node* x){
+    if(x == nullptr){return;}
+
+    deleteHelper(x->left);
+    deleteHelper(x->right);
+    delete x;
+}

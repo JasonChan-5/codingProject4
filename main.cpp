@@ -11,30 +11,32 @@ void largeShakeAndShuffle(BST &x, vector<int> &y);
 void outputTests(BST &x, vector<int> ai, vector<int> rie);
 
 int main(){
-    //BST *x = new BST();
-    // vector<int> n = {5, 2, 8, 1, 3, 7, 9};
-    // vector<int> q = {1, 2, 3, 5, 6, 7, 7};
-    // x->insertVector(n);
-    // // vector<int> m = {5, 2, 8};
-    // // x->removeVector(m);
-    // // x->shake(n, 7, 7);
-    // // for (int i = 0; i < n.size(); i++){
-    // //     cout << n.at(i) << " ";
-    // // }
-    // // cout << endl;
+    cout << "Round 1, 1000. Fight!" << endl;
+    experimentGenerator(1000);
+    cout << "------------------------------\n" << endl;
+    
+    cout << "Round 2, 10000. Fight!" << endl;
+    experimentGenerator(10000);
+    cout << "------------------------------\n" << endl;
+    
+    cout << "Round 3, 50000. Fight!" << endl;
+    experimentGenerator(50000);
+    cout << "------------------------------\n" << endl;
 
-    // x->printInOrder();
-    // cout << endl;
 
-    // cout << x->getCount() << endl;
-    // x->reset();
-    // cout << x->getCount() << endl;
+    // BST test = BST();
+    // test.insert(5);
+    // test.insert(2);
+    // test.insert(7);
+    // test.insert(1);
+    // test.insert(3);
 
-    for (int i = 0; i < 1; i++){
-        cout << "Round " << i + 1 << ". Fight!" << endl;
-        experimentGenerator(50000);
-        cout << "------------------------------\n" << endl;
-    }
+    // test.remove(1);
+    // test.remove(2);
+    // test.remove(5);
+    // test.remove(7);
+    // cout<<"HELLO"<<endl;
+    // test.remove(3);
 }
 
 void experimentGenerator(int x){
@@ -75,6 +77,8 @@ void experimentGenerator(int x){
     /*perform skewed tests here*/
     cout<<"Skewed"<<endl;
     outputTests(*skewed, ai, rie);
+    cout<<"Height of Skewed: "<<skewed->getHeight()<<endl;
+    cout<<"Average Depth of Skewed: "<<skewed->avgDepth()<<endl;
 
     /*-------------------------*/
     delete skewed;
@@ -87,6 +91,8 @@ void experimentGenerator(int x){
     /*perform slightly randomized tests here*/
     cout<<"Slightly Random"<<endl;
     outputTests(*slightlyRandom, ai, rie);
+    cout<<"Height of Slightly Random: "<<slightlyRandom->getHeight()<<endl;
+    cout<<"Average Depth of Slightly Random: "<<slightlyRandom->avgDepth()<<endl;
 
     /*-------------------------*/
     delete slightlyRandom;
@@ -98,6 +104,8 @@ void experimentGenerator(int x){
     /*perform slightly randomized tests here*/
     cout<<"Fully Random"<<endl;
     outputTests(*veryRandom, ai ,rie);
+    cout<<"Height of Very Random: "<<veryRandom->getHeight()<<endl;
+    cout<<"Average Depth of Very Random: "<<veryRandom->avgDepth()<<endl;
 
     /*-------------------------*/
     delete veryRandom;
@@ -129,7 +137,7 @@ void outputTests(BST &x, vector<int> ai, vector<int> rie){
     int comps = 0;
 
     //find comparisons
-    for (int y = 0; y < ai.size(); y++){
+    for (unsigned int y = 0; y < ai.size(); y++){
         x.find(ai.at(y));
     }
     comps = x.getCount() / half;

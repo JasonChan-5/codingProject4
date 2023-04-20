@@ -12,9 +12,17 @@
 
 <p>For our experiments, we created many helper functions to test the effectiveness of different shaped BSTs. Using trees of different sizes, we have generated a tree that is skewed, a tree that is slightly randomized, and a tree that is heavily randomized for each time the test method was called. In this test method, we averaged the number of comparisons made for a number of random calls to functions find (executed n/2 times), insert (called 50 times), and delete (called 50 times) where n is the number of nodes. The reason why we only called insert and delete 50 times was to avoid altering the tree in a meaningful way during the tests. After recording the average number of comparisons, we recorded the average results for trees of different sizes to see how our results scale with the number of nodes</p>
 
-<h3>Data Recorded</h3>
+<h3>How to Run:</h3>
 
-<b>SKEW</b>
+<ul>
+    <li> Execute the make file to generate executable called exec
+    <li> Use ./exec to run the executable which has our basic experiments that we used on multiple runs to average
+    <li> After execution is done, call make clean to remove the executable and any object files used for linking
+</ul>
+
+<h3>Data Recorded:</h3>
+
+<b>Skew</b>
 
     Size of Tree | Average Comparisons Find | Average Comparisons Insert | Average Comparisons Remove
        50000                 24976                      28643                        28641
@@ -28,6 +36,18 @@
 
     Size of Tree | Average Comparisons Find | Average Comparisons Insert | Average Comparisons Remove
        50000                 1394                       1249                         1249 
+
+<b>Height and Depth Data</b>
+
+    Average Height of Skewed Tree:             49949
+    Average Depth of Skewed Tree:              24975
+
+    Average Height of Slightly Random Tree:    18879
+    Average Depth of Slightly Random Tree:      8682
+
+    Average Height of Fully Random Tree:        7667
+    Average Depth of Fully Random Tree:         1542
+
 
 <b>Raw Data:</b>
 
@@ -107,7 +127,7 @@
     ------------------------------
 
 
-<b>SKEW</b>
+<b>Skew</b>
 
     Size of Tree | Average Comparisons Find | Average Comparisons Insert | Average Comparisons Remove
         10000                 4974                       5153                         5141
@@ -122,6 +142,16 @@
     Size of Tree | Average Comparisons Find | Average Comparisons Insert | Average Comparisons Remove
         10000                  243                        229                          232
 
+<b>Height and Depth Data</b>
+
+    Average Height of Skewed Tree:              9949
+    Average Depth of Skewed Tree:               4976
+    
+    Average Height of Slightly Random Tree:     4762
+    Average Depth of Slightly Random:           2007
+    
+    Average Height of Fully Random Tree:        1330
+    Average Depth of Fully Random Tree:          323
 
 <b>Raw Data</b>
 
@@ -200,8 +230,7 @@
     Average comparisons for insert: 232
     ------------------------------
 
-
-<b>SKEW</b>
+<b>Skew</b>
 
     Size of Tree | Average Comparisons Find | Average Comparisons Insert | Average Comparisons Remove
         1000                 511                        436                          426
@@ -215,6 +244,16 @@
     Size of Tree | Average Comparisons Find | Average Comparisons Insert | Average Comparisons Remove
         1000                  18                         20                           21
 
+<b>Height and Depth Data</b>
+
+    Average Height of Skewed Tree:               950
+    Average Depth of Skewed Tree:                472
+
+    Average Height of Slightly Random Tree:      240
+    Average Depth of Slightly Random Tree:       118
+
+    Average Height of Fully Random Tree:          91
+    Average Depth of Fully Random Tree:           22
 
 <b>Raw Data:</b>
 
@@ -298,4 +337,5 @@
 <ul>
     <li> The number of comparisons grow much faster in a skew tree than a randomized tree. This is most likely because a skew tree's search is O(n) while a balanced tree's search is O(log(n))
     <li> The average number of comparisons for a skew tree versus a randomized tree of the same size varies by a wide margin. This is also most likely due to the big O time complexity based on the organization of the tree
+    <li> The height and average depth also grow much slower in the randomized trees in comparison to the skewed trees because of the height and average depth in a skewed tree being O(n) and the height and average depth of a tree as it becomes closer to becoming balanced approached log(n)
 </ul>
